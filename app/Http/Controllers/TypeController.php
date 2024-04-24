@@ -15,7 +15,7 @@ class TypeController extends Controller
     {
         $types = Type::all();
 
-        return view('admin.languageTypes.index',compact('types'));
+        return view('admin.languages.index', compact('types'));
     }
 
     /**
@@ -39,7 +39,8 @@ class TypeController extends Controller
      */
     public function show(Type $type)
     {
-        //
+        // dd($type->projects);
+        return view('admin.languages.show', compact('type'));
     }
 
     /**
@@ -63,6 +64,8 @@ class TypeController extends Controller
      */
     public function destroy(Type $type)
     {
-        //
+        $type->delete();
+
+        return redirect()->route('admin.languages.index');
     }
 }
