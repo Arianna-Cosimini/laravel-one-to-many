@@ -23,7 +23,7 @@
                     <tr>
                         <th scope="row">{{ $loop->index + 1 }}</th>
                         <td>{{ $type->type }}</td>
-
+                        
                         <td>
                             <a href="{{ route('admin.types.show', $type->id) }}" class="btn btn-info">Mostra</a>
                         </td>

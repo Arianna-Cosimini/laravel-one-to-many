@@ -28,6 +28,8 @@ class UpdateprojectRequest extends FormRequest
             "code" => "required|max:50",
             "link" => "required|max:200",
             'type_id' => 'nullable|exists:types,id',
+            'cover-image' => 'nullable|max:255',
+
         ];
     }
 

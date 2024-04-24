@@ -65,6 +65,11 @@
 
         <h1>{{ $project->name }}</h1>
 
+        <div class="mb-4 text-center">
+            <img src="{{ asset('storage/' . $project->cover_image) }}" alt="Copertina immagine">
+        </div>
+
+
         <small>{{ $project->type?->type }}</small>
 
         <p>

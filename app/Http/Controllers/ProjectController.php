@@ -40,6 +40,13 @@ class ProjectController extends Controller
         $request->validated();
         $newProject = new Project();
 
+        if ($request->hasFile('cover_image')) {
+
+            $path = Storage::disk('public')->put('post_images', $request->cover_image);
+            $newProject->cover_image = $path;
+            
+        }
+
         // if ($request->hasFile("'thumb")) {
 
         //     $path = Storage::disk("public")->put("post_images", $request->thumb);
@@ -77,11 +84,11 @@ class ProjectController extends Controller
         // dd($request);
         $request->validated();
 
-        // if ($request->hasFile("'thumb")) {
+        if ($request->hasFile('cover_images')) {
 
-        //     $path = Storage::disk("public")->put("post_images", $request->thumb);
-        //     $project->thumb = $path;
-        // }
+            $path = Storage::disk('public')->put('post_images', $request->cover_images);
+            $project->cover_images = $path;
+        }
 
         $project->fill($request->all());
         $project->save();

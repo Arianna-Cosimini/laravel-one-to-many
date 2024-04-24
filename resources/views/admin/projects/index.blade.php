@@ -4,7 +4,7 @@
     <div class="container py-5">
         <div class="top-bar d-flex justify-content-between align-items-center">
             <h1 class="display-1 fw-bold text-uppercase text-center mb-5">Il mio portfolio</h1>
-            <a href="{{route('admin.projects.create')}}"class="btn btn-danger">Aggiungi un progetto</a>
+            <a href="{{ route('admin.projects.create') }}"class="btn btn-danger">Aggiungi un progetto</a>
 
         </div>
         <div class="row justify-content-center row-gap-5 mb-5" style="gap:20px">
@@ -13,6 +13,7 @@
                 <div class="card" style=" width: calc(100% / 4 - 20px); min-height: 500px">
                     <img src="{{ $project->thumb }}" class="card-img-top" alt="..."
                         style="object-fit:cover; height: 254px;">
+                    <small>{{ $project->type?->type }}</small>
                     <div class="card-body  d-flex flex-column justify-content-between">
                         <h5 class="card-title">{{ $project->name }}</h5>
                         <p class="card-text">{{ $project->description }}</p>

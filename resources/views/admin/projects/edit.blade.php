@@ -23,7 +23,8 @@
 
             <div class="mb-4">
                 <label for="description">Contenuto</label>
-                <textarea class="form-control  @error('description') is-invalid @enderror" name="description" id="description" rows="4">{{ old('description') ?? $project->description }}</textarea>
+                <textarea class="form-control  @error('description') is-invalid @enderror" name="description" id="description"
+                    rows="4">{{ old('description') ?? $project->description }}</textarea>
                 @error('description')
                     <div class="invalid-feedback">
                         {{ $message }}
@@ -70,6 +71,17 @@
 
                 </select>
 
+            </div>
+
+            <div class="mb-4">
+                <img src="{{ asset('storage/' . $project->cover_image) }}" alt="Copertina immagine">
+                <label for="cover_image">Immagine di copertina</label>
+                <input type="file" class="form-control @error('cover_image') is-invalid @enderror" name="cover_image">
+                @error('cover_image')
+                    <div class="invalid-feedback">
+                        {{ $message }}
+                    </div>
+                @enderror
             </div>
 
 

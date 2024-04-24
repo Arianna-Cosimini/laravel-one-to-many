@@ -5,7 +5,7 @@
 
         <h1>Aggiungi un progetto</h1>
 
-        <form action="{{ route('admin.projects.store') }}" method="POST">
+        <form action="{{ route('admin.projects.store') }}" method="POST" enctype="multipart/form-data">
             @csrf
 
             <div class="mb-4">
@@ -57,6 +57,16 @@
                 <input class="form-control  @error('thumb') is-invalid @enderror" name="thumb" id="thumb"
                     rows="4" value="{{ old('thumb') }}">
                 @error('thumb')
+                    <div class="invalid-feedback">
+                        {{ $message }}
+                    </div>
+                @enderror
+            </div>
+
+            <div class="mb-4">
+                <label class="mb-2" for="cover_image">Immagine di copertina</label>
+                <input type="file" class="form-control @error('cover_image') is-invalid @enderror" name="cover_image">
+                @error('cover_image')
                     <div class="invalid-feedback">
                         {{ $message }}
                     </div>
