@@ -27,6 +27,7 @@ class StoreprojectRequest extends FormRequest
             "thumb" => "nullable",
             "code" => "required|max:50",
             "link" => "required|max:200",
+            'type_id' => 'nullable|exists:types,id',
         ];
     }
 

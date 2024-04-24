@@ -1,5 +1,3 @@
-
-
 @extends('layouts.app')
 
 @section('content')
@@ -63,6 +61,23 @@
                         {{ $message }}
                     </div>
                 @enderror
+            </div>
+
+            <div class="mb-4">
+
+                <label class="mb-2" for="type_id">Categoria</label>
+
+                <select class="form-select" name="type_id" id="type_id">
+
+                    <option value=""></option>
+
+                    @foreach ($types as $type)
+                        <option value="{{ $type->id }}" {{ $type->id == old('type_id') ? 'selected' : '' }}>
+                            {{ $type->type }}</option>
+                    @endforeach
+
+                </select>
+
             </div>
 
             <button class="btn btn-primary">Aggiungi</button>

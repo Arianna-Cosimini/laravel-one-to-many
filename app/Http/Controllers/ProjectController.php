@@ -3,9 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Models\project;
+use App\Models\Type;
 use App\Http\Requests\StoreprojectRequest;
 use App\Http\Requests\UpdateprojectRequest;
 use Illuminate\Support\Facades\Storage;
+
+use function PHPSTORM_META\type;
 
 class ProjectController extends Controller
 {
@@ -24,7 +27,8 @@ class ProjectController extends Controller
      */
     public function create()
     {
-        return view("admin.projects.create");
+        $types = Type::all();
+        return view("admin.projects.create", compact("types"));
     }
 
     /**
@@ -61,7 +65,8 @@ class ProjectController extends Controller
      */
     public function edit(project $project)
     {
-        return view('admin.projects.edit', compact('project'));
+        $types = Type::all();
+        return view('admin.projects.edit', compact('project','types'));
     }
 
     /**
@@ -69,7 +74,7 @@ class ProjectController extends Controller
      */
     public function update(StoreprojectRequest $request, project $project)
     {
-        dd($request);
+        // dd($request);
         $request->validated();
 
         // if ($request->hasFile("'thumb")) {

@@ -11,7 +11,7 @@ class UpdateprojectRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +22,36 @@ class UpdateprojectRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            "name" => "required|max:100",
+            "description" => "required|max:5000",
+            "thumb" => "nullable",
+            "code" => "required|max:50",
+            "link" => "required|max:200",
+            'type_id' => 'nullable|exists:types,id',
+        ];
+    }
+
+    public function messages(): array
+    {
+        return [
+            'name.required' => 'Il titolo deve essere inserito',
+            'name.max' => "Il titolo deve avere massimo :max caratteri",
+            'code.max' => "La tipologia del linguaggio utilizzato deve avere massimo :max caratteri",
+            'code.required' => 'La tipologia del linguaggio utilizzato deve essere inserita',
+            'description.max' => "Inserisci una descrizione di massimo :max caratteri",
+            'link.required' => "L'url del tuo indirizzo deve essere inserito",
+
+
+        ];
+    }
+
+    public function attributes(): array
+    {
+        return [
+            "name" => "titolo",
+            "description" => "descrizione",
+            "code" => "linguaggio",
+            "link" => "url",
         ];
     }
 }
